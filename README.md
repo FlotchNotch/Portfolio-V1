@@ -1,6 +1,10 @@
 # Portfolio - Florian Marie
 
-Portfolio personnel développé avec Next.js et Framer Motion.
+Mon portfolio personnel développé avec Next.js et Framer Motion.
+
+## 📋 À propos
+
+Ce repository contient le code source de mon portfolio personnel. Il s'agit d'un projet privé qui présente mes compétences, projets et expériences en développement web.
 
 ## 🚀 Fonctionnalités
 
@@ -10,7 +14,7 @@ Portfolio personnel développé avec Next.js et Framer Motion.
 - Menu mobile avec hamburger
 - Navigation smooth entre sections
 
-## 🛠️ Technologies
+## 🛠️ Technologies utilisées
 
 - **Next.js 14** - Framework React
 - **TypeScript** - Typage statique
@@ -18,7 +22,9 @@ Portfolio personnel développé avec Next.js et Framer Motion.
 - **Tailwind CSS** - Styling
 - **React Hooks** - État et effets
 
-## 📦 Installation
+## 🔧 Développement local
+
+Si vous souhaitez voir le code en action localement :
 
 ```bash
 # Cloner le repo
@@ -32,46 +38,27 @@ npm install
 npm run dev
 ```
 
-Ouvrir [http://localhost:3000](http://localhost:3000)
-
 ## 📁 Structure
 
 ```
 portfolio/
 ├── app/           # Pages Next.js
 ├── components/    # Composants React
-│   └── header.tsx # Navigation
 ├── hooks/         # Custom hooks
-│   └── use-mobile.tsx
 └── public/        # Assets statiques
 ```
 
-## 🎨 Personnalisation
+## ⚠️ Note importante
 
-1. **Modifier les infos** : Éditer `app/page.tsx`
-2. **Changer la navigation** : Modifier `navItems` dans `header.tsx`
-3. **Ajuster les couleurs** : Modifier les classes Tailwind
-
-## 🚀 Déploiement
-
-### Vercel (recommandé)
-```bash
-npm i -g vercel
-vercel --prod
-```
-
-### Build manuel
-```bash
-npm run build
-npm start
-```
+**Ce projet est à des fins personnelles uniquement.** Il s'agit de mon portfolio professionnel et n'est pas destiné à être réutilisé ou forké pour d'autres projets. Le code est partagé publiquement à des fins de démonstration de mes compétences techniques.
 
 ## 📧 Contact
 
 **Florian Marie**
-- Email : votre-email@domain.com
-- GitHub : [@votre-username]
+- Email : florian.marie92@gmail.com
+- GitHub : [@FlotchNotch]
+- Portfolio : [URL de votre site]
 
 ---
 
-⭐ **Star le repo si ça vous plaît !**
+© 2025 Florian Marie - Tous droits réservés
