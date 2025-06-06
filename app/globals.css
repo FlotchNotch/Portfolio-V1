@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-weight: 300;
+}
+
+/* Container pattern uniforme */
+.section-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Padding vertical uniforme */
+.section-padding {
+  @apply py-16 sm:py-24 lg:py-32;
+}
+
+/* Typography scale cohérente */
+.heading-xl {
+  @apply text-6xl md:text-7xl lg:text-8xl xl:text-9xl;
+}
+
+.heading-lg {
+  @apply text-4xl sm:text-5xl;
+}
+
+.heading-md {
+  @apply text-2xl md:text-3xl lg:text-4xl;
+}
+
+.heading-sm {
+  @apply text-xl sm:text-2xl;
+}
+
+/* Spacing uniforme */
+.spacing-lg {
+  @apply mb-12 sm:mb-16 lg:mb-24;
+}
+
+.spacing-md {
+  @apply mb-8 sm:mb-12;
+}
+
+.spacing-sm {
+  @apply mb-4 sm:mb-6 lg:mb-8;
+}
+
+/* Grids responsives standards */
+.grid-2-cols {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16;
+}
+
+.grid-3-cols {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8;
+}
+
+/* Focus management */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(147, 51, 234, 0.5);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6b21a8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(168, 85, 247, 0.2);
+  color: #ffffff;
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(0)) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@supports not (backdrop-filter: blur(0)) {
+  .backdrop-blur-md {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+/* Aurora animations simplifiées mais visibles */
+@keyframes blob {
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(50px, -100px) scale(1.2);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.8);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+.animate-blob {
+  animation: blob 15s infinite ease-in-out;
+}
+
+/* Delay classes for animations */
+.animation-delay-2000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 8s;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Typography improvements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+  letter-spacing: -0.025em;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+/* Test temporaire - très visible */
+.test-aurora {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: purple;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: 1;
+  animation: blob 5s infinite ease-in-out;
+}
