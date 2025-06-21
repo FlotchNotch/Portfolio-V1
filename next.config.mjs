@@ -16,6 +16,12 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Désactivez optimizeCss temporairement
+  experimental: {
+    // optimizeCss: false, // Commentez cette ligne si elle existe
+  },
+  // Ou utilisez cette configuration plus stable
+  swcMinify: true,
 }
 
-export default nextConfig
+module.exports = nextConfig
