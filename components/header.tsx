@@ -7,6 +7,8 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("hero")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   const navItems = [
     { id: "hero", label: "Accueil", icon: Home },
@@ -18,10 +20,29 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+      
+      // Détection du scroll
+      setIsScrolled(currentScrollY > 20)
+      
+      // Logique de visibilité du header
+      if (currentScrollY < 50) {
+        // Toujours visible en haut de page
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scroll vers le bas - cacher
+        setIsVisible(false)
+        setIsMenuOpen(false) // Fermer le menu mobile si ouvert
+      } else if (currentScrollY < lastScrollY) {
+        // Scroll vers le haut - montrer
+        setIsVisible(true)
+      }
+      
+      setLastScrollY(currentScrollY)
 
+      // Détection de section active
       const sections = navItems.map(item => document.getElementById(item.id))
-      const scrollPosition = window.scrollY + 150
+      const scrollPosition = currentScrollY + 150
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
@@ -34,7 +55,7 @@ export default function Header() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
@@ -43,14 +64,18 @@ export default function Header() {
 
   return (
     <>
-      {/* Header Desktop - Padding augmenté */}
+      {/* Header Desktop avec animation */}
       <header className={`
-        fixed top-0 left-0 right-0 z-50 transition-all duration-300 hidden md:block
+        fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out hidden md:block
+        ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
         ${isScrolled ? 'py-3' : 'py-4'}
       `}>
         <div className="container">
           <div className="flex justify-center">
-            <nav>
+            <nav className={`
+              transition-all duration-500 ease-out
+              ${isVisible ? 'scale-100' : 'scale-95'}
+            `}>
               <div className={`
                 transition-all duration-300 rounded-full px-3 py-2
                 ${isScrolled
@@ -59,7 +84,7 @@ export default function Header() {
                 }
               `}>
                 <div className="flex items-center gap-2">
-                  {navItems.map((item) => {
+                  {navItems.map((item, index) => {
                     const IconComponent = item.icon
                     const isActive = activeSection === item.id
                     
@@ -74,6 +99,9 @@ export default function Header() {
                             : 'text-neutral-400 hover:text-white hover:bg-white/10'
                           }
                         `}
+                        style={{
+                          transitionDelay: isVisible ? `${index * 50}ms` : '0ms'
+                        }}
                       >
                         <IconComponent size={18} />
                         <span className="hidden lg:inline">
@@ -89,13 +117,14 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Header Mobile */}
+      {/* Header Mobile avec animation */}
       <div className="md:hidden">
-        {/* Bouton Menu */}
+        {/* Bouton Menu avec animation */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className={`
-            fixed top-4 right-4 z-50 p-3 rounded-full transition-all duration-300 group
+            fixed top-4 right-4 z-50 p-3 rounded-full transition-all duration-500 ease-out group
+            ${isVisible ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-16 opacity-0 scale-90'}
             ${isScrolled || isMenuOpen
               ? 'bg-black/40 backdrop-blur-xl border border-white/30'
               : 'bg-black/20 backdrop-blur-md border border-white/15'
@@ -133,15 +162,15 @@ export default function Header() {
           </div>
         </button>
 
-        {/* Menu Déroulant */}
+        {/* Menu Déroulant avec animation améliorée */}
         <div className={`
-          fixed top-20 right-4 z-40 transition-all duration-400 ease-out
-          ${isMenuOpen 
+          fixed top-20 right-4 z-40 transition-all duration-500 ease-out
+          ${isMenuOpen && isVisible
             ? 'opacity-100 translate-y-0 scale-100' 
-            : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'
+            : 'opacity-0 -translate-y-8 scale-95 pointer-events-none'
           }
         `}>
-          <div className="bg-black/40 backdrop-blur-xl border border-white/30 rounded-3xl p-3 shadow-2xl min-w-[200px]">
+          <div className="bg-black/40 backdrop-blur-xl border border-white/30 rounded-3xl p-3 shadow-2xl min-w-[200px] transform">
             <nav className="space-y-2">
               {navItems.map((item, index) => {
                 const IconComponent = item.icon
@@ -159,17 +188,17 @@ export default function Header() {
                       }
                     `}
                     style={{ 
-                      animationDelay: `${index * 60}ms`,
-                      transform: isMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
-                      transition: `all 0.3s ease-out ${index * 60}ms`
+                      animationDelay: `${index * 80}ms`,
+                      transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(-10px) scale(0.95)',
+                      transition: `all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 80}ms`
                     }}
                   >
                     <IconComponent size={18} className="flex-shrink-0" />
                     <span>{item.label}</span>
                     
-                    {/* Point actif */}
+                    {/* Point actif avec animation */}
                     {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-emerald-400 rounded-full"></div>
+                      <div className="ml-auto w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                     )}
                   </button>
                 )
@@ -178,10 +207,10 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Overlay */}
+        {/* Overlay avec animation */}
         {isMenuOpen && (
           <div 
-            className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm"
+            className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm transition-all duration-300 opacity-100"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
