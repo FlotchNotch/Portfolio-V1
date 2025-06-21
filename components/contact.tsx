@@ -1,193 +1,203 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, Github, Linkedin, Send, MapPin } from "lucide-react"
+import { Mail, MapPin, Phone, Send, Github, Linkedin } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    console.log("Form submitted:", formData)
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setFormData({ name: "", email: "", message: "" })
-      alert("Message envoyé !")
-    }, 2000)
+    // Créer le lien mailto avec les données du formulaire
+    const subject = encodeURIComponent(formData.subject)
+    const body = encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)
+    window.location.href = `mailto:florian.marie92@gmail.com?subject=${subject}&body=${body}`
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }))
   }
-
-  const socialLinks = [
-    {
-      name: "Email",
-      icon: Mail,
-      href: "mailto:florian.marie92@gmail.com",
-      label: "florian.marie92@gmail.com",
-    },
-    {
-      name: "GitHub",
-      icon: Github,
-      href: "https://github.com/flotchnotch",
-      label: "github.com/flotchnotch",
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      href: "https://linkedin.com/in/flotchnotch",
-      label: "linkedin.com/in/flotchnotch",
-    },
-  ]
 
   return (
     <section id="contact" className="section">
       <div className="container">
-        <div className="max-w-4xl">
-          <div className="text-sm text-neutral-400 font-medium mb-4 tracking-wider">CONTACT</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-display mb-6 sm:mb-8 leading-tight">Travaillons ensemble</h2>
-          <p className="text-neutral-400 mb-12 sm:mb-16 max-w-2xl text-base sm:text-lg text-body">
-            Intéressé par mon profil ? N'hésitez pas à me contacter pour discuter d'opportunités.
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-neutral-300 bg-clip-text text-transparent">
+            Travaillons Ensemble
+          </h2>
+          <p className="text-body text-xl text-neutral-400 max-w-2xl mx-auto">
+            Une idée de projet ? Une opportunité ? 
+            N'hésitez pas à me contacter pour discuter de vos besoins.
           </p>
+        </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <div className="card">
-                <h3 className="text-lg sm:text-xl font-semibold mb-6 sm:mb-8 text-serif tracking-wide">Envoyez-moi un message</h3>
-
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2 sm:mb-3 text-neutral-300">
-                        Nom
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="form-input"
-                        placeholder="Votre nom"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2 sm:mb-3 text-neutral-300">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="form-input"
-                        placeholder="votre@email.com"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2 sm:mb-3 text-neutral-300">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="form-input form-textarea"
-                      placeholder="Votre message..."
-                      required
-                    />
-                  </div>
-
-                  {/* Bouton formulaire - Harmonisé */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="group relative overflow-hidden w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-emerald-500/50 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 text-sm sm:text-base"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Envoi en cours...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                        <span>Envoyer le message</span>
-                      </>
-                    )}
-
-                    {/* Effet de brillance */}
-                    {!isSubmitting && (
-                      <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                    )}
-                  </button>
-                </form>
-              </div>
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">Restons en contact</h3>
+              <p className="text-neutral-400 mb-8">
+                Je suis toujours ouvert aux nouvelles opportunités et aux projets intéressants. 
+                Contactez-moi et voyons ce que nous pouvons créer ensemble.
+              </p>
             </div>
 
-            {/* Contact Info */}
-            <div className="lg:col-span-1 space-y-6 sm:space-y-8">
-              <div className="card">
-                <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-serif tracking-wide">Informations</h3>
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-center gap-3 sm:gap-4 text-sm">
-                    <MapPin size={18} className="text-neutral-400 flex-shrink-0" />
-                    <span>Rennes, France</span>
-                  </div>
-                  <div className="flex items-center gap-3 sm:gap-4 text-sm">
-                    <div className="w-4 h-4 flex items-center justify-center flex-shrink-0">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    </div>
-                    <span>Disponible pour un poste</span>
-                  </div>
+            {/* Contact Methods */}
+            <div className="space-y-6">
+              <a 
+                href="mailto:florian.marie92@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              >
+                <div className="p-3 bg-emerald-500/20 rounded-lg group-hover:bg-emerald-500/30 transition-colors">
+                  <Mail size={20} className="text-emerald-400" />
                 </div>
-              </div>
+                <div>
+                  <p className="font-medium text-white">Email</p>
+                  <p className="text-neutral-400">florian.marie92@gmail.com</p>
+                </div>
+              </a>
 
-              <div className="card">
-                <h3 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6 text-serif tracking-wide">Réseaux</h3>
-                <div className="space-y-3 sm:space-y-4">
-                  {/* Liens sociaux dans la sidebar - Harmonisés */}
-                  {socialLinks.map((link) => {
-                    const IconComponent = link.icon
-                    return (
-                      <a
-                        key={link.name}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full transition-all duration-300 flex items-center gap-3 sm:gap-4 px-4 py-3 sm:px-6 sm:py-4 backdrop-blur-sm"
-                      >
-                        <IconComponent size={18} className="text-neutral-400 group-hover:text-emerald-400 flex-shrink-0 transition-colors" />
-                        <div className="min-w-0">
-                          <div className="font-medium text-sm sm:text-base">{link.name}</div>
-                          <div className="text-xs sm:text-sm text-neutral-500 truncate">{link.label}</div>
-                        </div>
-                      </a>
-                    )
-                  })}
+              <a 
+                href="https://www.linkedin.com/in/florian-marie-0602a76a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group"
+              >
+                <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors">
+                  <Linkedin size={20} className="text-blue-400" />
+                </div>
+                <div>
+                  <p className="font-medium text-white">LinkedIn</p>
+                  <p className="text-neutral-400">Florian Marie</p>
+                </div>
+              </a>
+
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-3 bg-neutral-500/20 rounded-lg">
+                  <MapPin size={20} className="text-neutral-400" />
+                </div>
+                <div>
+                  <p className="font-medium text-white">Localisation</p>
+                  <p className="text-neutral-400">France</p>
                 </div>
               </div>
             </div>
+
+            {/* Social Links */}
+            <div>
+              <p className="text-sm text-neutral-500 mb-4">Suivez-moi sur</p>
+              <div className="flex gap-4">
+                <a 
+                  href="https://github.com/FlotchNotch"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link group"
+                  aria-label="GitHub"
+                >
+                  <Github size={18} className="group-hover:scale-110 transition-transform" />
+                </a>
+                
+                <a 
+                  href="https://www.linkedin.com/in/florian-marie-0602a76a/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link group"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="card">
+            <h3 className="text-xl font-bold text-white mb-6">Envoyez-moi un message</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-neutral-300 mb-2">
+                    Nom *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="form-input"
+                    placeholder="Votre nom"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-neutral-300 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="form-input"
+                    placeholder="votre@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-neutral-300 mb-2">
+                  Sujet *
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="form-input"
+                  placeholder="Sujet de votre message"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-neutral-300 mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="form-input form-textarea"
+                  placeholder="Votre message..."
+                  rows={5}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn-primary w-full group"
+              >
+                Envoyer le message
+                <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </form>
           </div>
         </div>
       </div>
