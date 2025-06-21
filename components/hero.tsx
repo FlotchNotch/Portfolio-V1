@@ -1,6 +1,7 @@
 "use client"
 
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import Image from "next/image"
 
 export default function Hero() {
   return (
@@ -9,7 +10,24 @@ export default function Hero() {
         {/* Status indicator */}
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-sm font-medium mb-8 backdrop-blur-sm">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-          Disponible pour de nouveaux projets
+          Ouvert aux opportunités
+        </div>
+
+        {/* Logo */}
+        <div className="mb-8 flex justify-center">
+          <div className="relative group">
+            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-2xl shadow-emerald-500/25 group-hover:scale-105 transition-transform duration-300 bg-white/10 backdrop-blur-sm border border-white/20">
+              <Image
+                src="/flotchlogo.png"
+                alt="Florian Marie Logo"
+                width={160}
+                height={160}
+                className="w-full h-full object-contain p-4"
+                priority
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-emerald-600/20 rounded-full blur-xl animate-pulse"></div>
+          </div>
         </div>
 
         {/* Main heading */}
@@ -19,13 +37,13 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="text-xl sm:text-2xl md:text-3xl text-neutral-300 mb-4 font-light">
-          Développeur Full Stack
+          Développeur Full Stack Junior
         </p>
 
         {/* Description */}
         <p className="text-body text-lg sm:text-xl text-neutral-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Passionné par la création d'expériences digitales innovantes et performantes. 
-          Spécialisé en React, Next.js et développement moderne.
+          Je développe des applications web avec React et Next.js. 
+          En apprentissage constant, j'aime créer des projets qui marchent bien.
         </p>
 
         {/* CTA Buttons */}
@@ -38,7 +56,7 @@ export default function Hero() {
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
             }}
           >
-            Voir mes projets
+            Mes projets
             <ArrowDown size={18} className="group-hover:translate-y-0.5 transition-transform" />
           </a>
           
