@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, MapPin, Phone, Send, Github, Linkedin } from "lucide-react"
+import { Mail, MapPin, Send, AlertCircle } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,13 +10,33 @@ export default function Contact() {
     subject: '',
     message: ''
   })
+  const [showAlert, setShowAlert] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Vérifier que tous les champs sont remplis
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setShowAlert(true)
+      setTimeout(() => setShowAlert(false), 5000)
+      return
+    }
+
     // Créer le lien mailto avec les données du formulaire
     const subject = encodeURIComponent(formData.subject)
-    const body = encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)
+    const body = encodeURIComponent(
+      `Bonjour Florian,\n\n` +
+      `${formData.message}\n\n` +
+      `---\n` +
+      `Nom: ${formData.name}\n` +
+      `Email: ${formData.email}`
+    )
+    
+    // Ouvrir le client email
     window.location.href = `mailto:florian.marie92@gmail.com?subject=${subject}&body=${body}`
+    
+    // Réinitialiser le formulaire après envoi
+    setFormData({ name: '', email: '', subject: '', message: '' })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -66,55 +86,28 @@ export default function Contact() {
                 </div>
               </a>
 
-              <a 
-                href="https://www.linkedin.com/in/florian-marie-0602a76a/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group"
-              >
-                <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors">
-                  <Linkedin size={20} className="text-blue-400" />
-                </div>
-                <div>
-                  <p className="font-medium text-white">LinkedIn</p>
-                  <p className="text-neutral-400">Florian Marie</p>
-                </div>
-              </a>
-
               <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10">
                 <div className="p-3 bg-neutral-500/20 rounded-lg">
                   <MapPin size={20} className="text-neutral-400" />
                 </div>
                 <div>
                   <p className="font-medium text-white">Localisation</p>
-                  <p className="text-neutral-400">France</p>
+                  <p className="text-neutral-400">Rennes, France</p>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div>
-              <p className="text-sm text-neutral-500 mb-4">Suivez-moi sur</p>
-              <div className="flex gap-4">
-                <a 
-                  href="https://github.com/FlotchNotch"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link group"
-                  aria-label="GitHub"
-                >
-                  <Github size={18} className="group-hover:scale-110 transition-transform" />
-                </a>
-                
-                <a 
-                  href="https://www.linkedin.com/in/florian-marie-0602a76a/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link group"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
-                </a>
+            {/* Info sur le formulaire */}
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+              <div className="flex items-start gap-3">
+                <Mail size={18} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium text-emerald-300">Comment ça marche ?</p>
+                  <p className="text-xs text-emerald-400/80 mt-1">
+                    Le formulaire ouvre votre client email avec le message pré-rempli. 
+                    Simple et efficace !
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -122,6 +115,14 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="card">
             <h3 className="text-xl font-bold text-white mb-6">Envoyez-moi un message</h3>
+            
+            {/* Alert */}
+            {showAlert && (
+              <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3">
+                <AlertCircle size={18} className="text-red-400" />
+                <p className="text-sm text-red-300">Veuillez remplir tous les champs obligatoires</p>
+              </div>
+            )}
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -194,10 +195,24 @@ export default function Contact() {
                 type="submit"
                 className="btn btn-primary w-full group"
               >
-                Envoyer le message
+                Ouvrir dans mon client email
                 <Send size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </form>
+
+            {/* Alternative directe */}
+            <div className="mt-6 pt-6 border-t border-white/10">
+              <p className="text-sm text-neutral-500 text-center mb-4">
+                Ou contactez-moi directement :
+              </p>
+              <a 
+                href="mailto:florian.marie92@gmail.com"
+                className="btn btn-secondary w-full group"
+              >
+                Écrire un email
+                <Mail size={18} className="group-hover:rotate-12 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

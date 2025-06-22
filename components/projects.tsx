@@ -89,9 +89,9 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group bg-white/5 hover:bg-white/10 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 backdrop-blur-sm text-sm sm:text-base"
+                    className="btn btn-ghost group"
                   >
-                    <Github size={18} />
+                    <Github size={18} className="group-hover:rotate-12 transition-transform" />
                     <span>Code</span>
                   </a>
 
@@ -99,30 +99,27 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative overflow-hidden bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 text-sm sm:text-base"
+                    className="btn btn-primary group"
                   >
-                    <ExternalLink size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ExternalLink size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     <span>Demo</span>
-
-                    {/* Effet de brillance */}
-                    <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                   </a>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* CTA GitHub global - Ajouté après la grille */}
+          {/* CTA GitHub global */}
           <div className="text-center mt-16">
             <a
               href="https://github.com/flotchnotch"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white/5 hover:bg-white/10 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium transition-all duration-300 inline-flex items-center gap-2 border border-white/10 hover:border-white/20 backdrop-blur-sm text-sm sm:text-base"
+              className="btn btn-secondary group"
             >
-              <Github size={18} />
+              <Github size={18} className="group-hover:rotate-12 transition-transform" />
               <span>Voir tous mes projets sur GitHub</span>
-              <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
         </div>
