@@ -126,132 +126,103 @@ export default function Header() {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className={`
-            fixed top-4 right-4 z-[60] p-3 rounded-full transition-all duration-500 ease-out group
-            ${isVisible ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-16 opacity-0 scale-90'}
-            ${isScrolled || isMenuOpen
-              ? 'bg-black/60 backdrop-blur-xl border border-white/30'
-              : 'bg-black/20 backdrop-blur-md border border-white/15'
+            fixed top-4 right-4 z-[60] p-3 rounded-full transition-all duration-300 ease-out
+            ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'}
+            ${isMenuOpen
+              ? 'bg-emerald-500/20 border-emerald-500/30'
+              : 'bg-black/40 border-white/20 hover:bg-black/60'
             }
-            ${isMenuOpen ? 'scale-110 bg-emerald-500/20 border-emerald-500/30' : 'hover:scale-105'}
+            border backdrop-blur-xl
           `}
         >
-          <div className="relative w-5 h-5 flex flex-col justify-center">
+          <div className="relative w-5 h-5 flex items-center justify-center">
             <span className={`
-              block w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center
-              ${isMenuOpen 
-                ? 'rotate-45 translate-y-0.5 bg-emerald-400' 
-                : 'mb-1'
-              }
+              absolute w-5 h-0.5 bg-white rounded-full transition-all duration-300 ease-out
+              ${isMenuOpen ? 'rotate-45 bg-emerald-400' : '-translate-y-1.5'}
             `}></span>
-            
             <span className={`
-              block w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center
-              ${isMenuOpen 
-                ? 'opacity-0 scale-0' 
-                : 'mb-1'
-              }
+              absolute w-5 h-0.5 bg-white rounded-full transition-all duration-300 ease-out
+              ${isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100'}
             `}></span>
-            
             <span className={`
-              block w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center
-              ${isMenuOpen 
-                ? '-rotate-45 -translate-y-0.5 bg-emerald-400' 
-                : ''
-              }
+              absolute w-5 h-0.5 bg-white rounded-full transition-all duration-300 ease-out
+              ${isMenuOpen ? '-rotate-45 bg-emerald-400' : 'translate-y-1.5'}
             `}></span>
           </div>
         </button>
 
         <div className={`
-          fixed inset-0 z-50 transition-all duration-700 ease-out
-          ${isMenuOpen && isVisible
-            ? 'opacity-100 pointer-events-auto' 
-            : 'opacity-0 pointer-events-none'
-          }
+          fixed inset-0 z-50 transition-all duration-500 ease-out
+          ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
         `}>
-          <div 
-            className={`
-              absolute inset-0 bg-black/60 transition-all duration-500
-              ${isMenuOpen ? 'opacity-100' : 'opacity-0'}
-            `}
-            onClick={() => setIsMenuOpen(false)}
-          />
           
           <div className={`
-            absolute top-0 left-0 right-0 h-[300px] sm:h-[350px]
-            bg-gradient-to-b from-black/95 via-black/90 to-black/70 
-            border-b border-white/20
-            transition-all duration-700 ease-out overflow-hidden
+            absolute top-4 left-4 right-4 transition-transform duration-500 ease-out
             ${isMenuOpen 
               ? 'translate-y-0' 
               : '-translate-y-full'
             }
           `}>
             
-            <div className="h-full flex flex-col px-4 sm:px-6 py-6 max-w-md mx-auto">
+            <div className="card p-6">
               
-              <div className="h-12"></div>
-              
-              <nav className="flex-1 flex flex-col justify-center space-y-3">
-                {navItems.map((item, index) => {
-                  const IconComponent = item.icon
-                  const isActive = activeSection === item.id
-                  
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => scrollToSection(item.id)}
-                      className={`
-                        group flex items-center gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-medium 
-                        transition-all duration-500 text-base relative overflow-hidden w-full
-                        ${isActive
-                          ? 'btn btn-primary'
-                          : 'btn btn-secondary'
-                        }
-                      `}
-                      style={{ 
-                        transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
-                        opacity: isMenuOpen ? 1 : 0,
-                        transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 80 + 200}ms`
-                      }}
-                    >
-                      <IconComponent 
-                        size={20} 
-                        className="group-hover:scale-110 transition-transform duration-300 flex-shrink-0" 
-                      />
-                      
-                      <span className="flex-1 text-left text-sm sm:text-base">
-                        {item.label}
-                      </span>
-                      
-                      {isActive && (
-                        <div className="relative flex-shrink-0">
-                          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                          <div className="absolute inset-0 w-2 h-2 bg-white rounded-full animate-ping opacity-75"></div>
-                        </div>
-                      )}
-                      
-                      {!isActive && (
-                        <div className="opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 text-sm">
-                          →
-                        </div>
-                      )}
-                    </button>
-                  )
-                })}
+              <nav>
+                <div className="space-y-2">
+                  {navItems.map((item, index) => {
+                    const IconComponent = item.icon
+                    const isActive = activeSection === item.id
+                    
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className={`
+                          btn w-full flex items-center gap-3 text-left
+                          ${isActive ? 'btn-primary' : 'btn-secondary'}
+                        `}
+                        style={{
+                          transform: isMenuOpen ? 'translateY(0)' : 'translateY(-20px)',
+                          opacity: isMenuOpen ? 1 : 0,
+                          transitionDelay: isMenuOpen ? `${index * 60 + 200}ms` : '0ms'
+                        }}
+                      >
+                        <IconComponent 
+                          size={18} 
+                          className="transition-transform group-hover:scale-110 flex-shrink-0" 
+                        />
+                        
+                        <span className="flex-1">
+                          {item.label}
+                        </span>
+                        
+                        {isActive && (
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse flex-shrink-0"></div>
+                        )}
+                      </button>
+                    )
+                  })}
+                </div>
               </nav>
               
               <div className={`
-                pt-4 border-t border-white/10 text-center
-                transition-all duration-500 delay-600
+                pt-4 mt-4 border-t border-white/10 text-center
+                transition-all duration-500 delay-500
                 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
               `}>
                 <p className="text-xs text-neutral-400">
-                  <span className="text-emerald-400">Florian Marie</span> • Développeur Full Stack
+                  <span className="text-emerald-400">Florian Marie</span> • Développeur Full Stack Junior
                 </p>
               </div>
+              
             </div>
           </div>
+          
+          {isMenuOpen && (
+            <div 
+              className="absolute inset-0 -z-10"
+              onClick={() => setIsMenuOpen(false)}
+            />
+          )}
         </div>
       </div>
     </>
