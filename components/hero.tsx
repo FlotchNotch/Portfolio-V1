@@ -99,7 +99,7 @@ export default function Hero() {
               </a>
               
               <a 
-                href="mailto:florian.marie92@gmail.com" 
+                href="mailto:florianmarie.webdev@gmail.com" 
                 className="social-link group"
                 aria-label="Email"
               >

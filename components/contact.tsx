@@ -43,10 +43,10 @@ export default function Contact() {
                     <div>
                       <p className="text-sm text-neutral-400 mb-1 font-medium tracking-wider">EMAIL</p>
                       <a
-                        href="mailto:florian.marie92@gmail.com"
+                        href="mailto:florianmarie.webdev@gmail.com"
                         className="text-white hover:text-emerald-400 transition-colors font-medium text-base"
                       >
-                        florian.marie92@gmail.com
+                        florianmarie.webdev@gmail.com
                       </a>
                     </div>
                   </div>
@@ -95,7 +95,7 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <a
-                  href="mailto:florian.marie92@gmail.com"
+                  href="mailto:florianmarie.webdev@gmail.com"
                   className="btn btn-primary group w-full flex items-center justify-center gap-3"
                 >
                   <Mail size={20} className="group-hover:rotate-12 transition-transform" />
