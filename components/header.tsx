@@ -188,11 +188,11 @@ export default function Header() {
             }
           `}>
             
-            <div className="h-full flex flex-col px-4 py-6">
+            <div className="h-full flex flex-col px-4 sm:px-6 py-6 max-w-md mx-auto">
               
               <div className="h-12"></div>
               
-              <nav className="flex-1 flex flex-col justify-center space-y-2">
+              <nav className="flex-1 flex flex-col justify-center space-y-3">
                 {navItems.map((item, index) => {
                   const IconComponent = item.icon
                   const isActive = activeSection === item.id
@@ -202,8 +202,8 @@ export default function Header() {
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
                       className={`
-                        group flex items-center gap-3 px-4 py-3 rounded-xl font-medium 
-                        transition-all duration-500 text-base relative overflow-hidden
+                        group flex items-center gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-medium 
+                        transition-all duration-500 text-base relative overflow-hidden w-full
                         ${isActive
                           ? 'btn btn-primary'
                           : 'btn btn-secondary'
@@ -216,23 +216,23 @@ export default function Header() {
                       }}
                     >
                       <IconComponent 
-                        size={18} 
-                        className="group-hover:scale-110 transition-transform duration-300" 
+                        size={20} 
+                        className="group-hover:scale-110 transition-transform duration-300 flex-shrink-0" 
                       />
                       
-                      <span className="flex-1 text-left">
+                      <span className="flex-1 text-left text-sm sm:text-base">
                         {item.label}
                       </span>
                       
                       {isActive && (
-                        <div className="relative">
+                        <div className="relative flex-shrink-0">
                           <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                           <div className="absolute inset-0 w-2 h-2 bg-white rounded-full animate-ping opacity-75"></div>
                         </div>
                       )}
                       
                       {!isActive && (
-                        <div className="opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                        <div className="opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 text-sm">
                           →
                         </div>
                       )}
