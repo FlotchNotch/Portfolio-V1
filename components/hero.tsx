@@ -1,173 +1,143 @@
 "use client"
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowDown, Github, Linkedin, Mail, MapPin, Sparkles } from "lucide-react"
 import Image from "next/image"
 
 export default function Hero() {
   return (
-    <section id="hero" className="section min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+    <section id="hero" className="section min-h-screen flex items-center justify-center relative overflow-hidden pt-32">
+      <div className="container relative z-10">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-7xl mx-auto">
           
           <div className="order-1 text-center lg:text-left w-full">
-            <div className="flex justify-center lg:justify-start mb-8 lg:mb-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-300 text-sm font-medium backdrop-blur-sm">
+            {/* Badge de statut simplifié */}
+            <div className="flex justify-center lg:justify-start mb-6">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-medium">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                Ouvert aux opportunités
+                <Sparkles size={14} />
+                <span>En apprentissage constant</span>
               </div>
             </div>
 
+            {/* Logo mobile */}
             <div className="flex justify-center lg:hidden mb-8">
-              <div className="relative group cursor-pointer">
-                <div className="absolute inset-0 -m-12">
-                  <div 
-                    className="w-full h-full rounded-full blur-2xl transition-all duration-1000 ease-out"
-                    style={{
-                      background: `radial-gradient(circle, rgba(21, 32, 28, 0.15) 0%, rgba(21, 32, 28, 0.1) 30%, rgba(21, 32, 28, 0.05) 100%)`,
-                      animation: 'gentle-pulse 4s ease-in-out infinite'
-                    }}
-                  ></div>
-                </div>
-
-                <div className="relative w-40 h-40 sm:w-52 sm:h-52 group-hover:scale-105 transition-transform duration-700 ease-out">
-                  <Image
-                    src="/flotchlogo.png"
-                    alt="Florian Marie Logo"
-                    width={208}
-                    height={208}
-                    className="w-full h-full object-contain drop-shadow-xl"
-                    priority
-                  />
-                </div>
-
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-                  <div className="absolute top-1/4 left-1/4 w-1 h-1 rounded-full animate-ping" style={{ animationDuration: '3s', backgroundColor: 'rgba(21, 32, 28, 0.6)' }}></div>
-                  <div className="absolute bottom-1/4 right-1/4 w-0.5 h-0.5 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s', backgroundColor: 'rgba(21, 32, 28, 0.5)' }}></div>
-                </div>
+              <div className="relative w-40 h-40 sm:w-48 sm:h-48">
+                <Image
+                  src="/flotchlogo.png"
+                  alt="Florian Marie Logo"
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-contain"
+                  priority
+                />
               </div>
             </div>
 
-            <h1 className="text-display text-6xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black mb-6 bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent leading-tight">
-              Florian Marie
+            {/* Titre avec effet gradient animé */}
+            <h1 className="relative text-display text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black mb-6 leading-[0.9]">
+              <span className="block bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent animate-gradient-x bg-300%">
+                Florian
+              </span>
+              <span className="block bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text text-transparent animate-gradient-x bg-300%" style={{ animationDelay: '0.5s' }}>
+                Marie
+              </span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-neutral-300 mb-8 font-light">
+            {/* Subtitle */}
+            <p className="text-lg sm:text-xl md:text-2xl text-neutral-300 font-semibold mb-4">
               Développeur Full Stack Junior
             </p>
 
-            <p className="text-body text-base sm:text-lg text-neutral-400 mb-12 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Je développe des applications web avec React et Next.js. En apprentissage constant, j'aime créer des projets qui marchent bien.
+            <div className="flex justify-center lg:justify-start items-center gap-2 mb-12">
+              <MapPin size={16} className="text-emerald-400" />
+              <span className="text-emerald-300 text-sm font-medium">Rennes, France</span>
+            </div>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg text-neutral-400 mb-12 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Je crée des applications web avec <span className="text-emerald-400 font-medium">React</span> et <span className="text-emerald-400 font-medium">Next.js</span>. 
+              Toujours curieux d'apprendre, je développe mes compétences à travers chaque projet.
             </p>
 
+            {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
               <button 
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn btn-primary group w-full sm:w-auto min-w-[180px]"
+                className="btn btn-primary group w-full sm:w-auto"
               >
-                Mes projets
-                <ArrowDown size={18} className="group-hover:translate-y-0.5 transition-transform" />
+                <span>Découvrir mes projets</span>
+                <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
               </button>
               
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn btn-secondary group w-full sm:w-auto min-w-[180px]"
+                className="btn btn-secondary group w-full sm:w-auto"
               >
-                Me contacter
-                <Mail size={18} className="group-hover:rotate-12 transition-transform" />
+                <Mail size={16} className="group-hover:rotate-12 transition-transform" />
+                <span>Me contacter</span>
               </button>
             </div>
 
-            <div className="flex justify-center lg:justify-start gap-6">
+            {/* Social links */}
+            <div className="flex justify-center lg:justify-start gap-4">
               <a 
                 href="https://github.com/FlotchNotch" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="social-link group"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 transition-all"
                 aria-label="GitHub"
               >
-                <Github size={20} className="group-hover:scale-110 transition-transform" />
+                <Github size={20} />
               </a>
               
               <a 
-                href="https://www.linkedin.com/in/florian-marie-0602a76a/" 
+                href="https://www.linkedin.com/in/florian-marie-bzh" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="social-link group"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-blue-500/20 hover:border-blue-500/30 transition-all"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} className="group-hover:scale-110 transition-transform" />
+                <Linkedin size={20} />
               </a>
               
               <a 
                 href="mailto:florianmarie.webdev@gmail.com" 
-                className="social-link group"
+                className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-500/30 transition-all"
                 aria-label="Email"
               >
-                <Mail size={20} className="group-hover:scale-110 transition-transform" />
+                <Mail size={20} />
               </a>
             </div>
           </div>
 
+          {/* Logo desktop */}
           <div className="order-2 hidden lg:flex justify-center lg:justify-end">
-            <div className="relative group cursor-pointer">
-              <div className="absolute inset-0 -m-16">
-                <div 
-                  className="w-full h-full rounded-full blur-3xl group-hover:scale-110 transition-all duration-1000 ease-out"
-                  style={{
-                    background: `radial-gradient(circle, rgba(21, 32, 28, 0.2) 0%, rgba(21, 32, 28, 0.12) 30%, rgba(21, 32, 28, 0.06) 100%)`,
-                    animation: 'gentle-pulse 4s ease-in-out infinite'
-                  }}
-                ></div>
-              </div>
-              
-              <div className="absolute inset-0 -m-8">
-                <div 
-                  className="w-full h-full rounded-full blur-2xl transition-all duration-700 ease-out"
-                  style={{
-                    background: `radial-gradient(circle, rgba(21, 32, 28, 0.1) 0%, transparent 70%)`,
-                    animation: 'gentle-pulse 6s ease-in-out infinite 1s'
-                  }}
-                ></div>
-              </div>
-
-              <div className="relative w-96 h-96 xl:w-[28rem] xl:h-[28rem] group-hover:scale-105 transition-transform duration-700 ease-out">
-                <Image
-                  src="/flotchlogo.png"
-                  alt="Florian Marie Logo"
-                  width={448}
-                  height={448}
-                  className="w-full h-full object-contain drop-shadow-2xl"
-                  priority
-                />
-              </div>
-
-              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-                <div className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full animate-ping" style={{ animationDuration: '3s', backgroundColor: 'rgba(21, 32, 28, 0.6)' }}></div>
-                <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s', backgroundColor: 'rgba(21, 32, 28, 0.5)' }}></div>
-                <div className="absolute bottom-1/4 left-3/4 w-2 h-2 rounded-full animate-ping" style={{ animationDuration: '5s', animationDelay: '2s', backgroundColor: 'rgba(21, 32, 28, 0.6)' }}></div>
-                <div className="absolute top-1/2 right-1/6 w-1 h-1 rounded-full animate-ping" style={{ animationDuration: '6s', animationDelay: '3s', backgroundColor: 'rgba(21, 32, 28, 0.4)' }}></div>
-              </div>
+            <div className="relative w-96 h-96 xl:w-[26rem] xl:h-[26rem]">
+              <Image
+                src="/flotchlogo.png"
+                alt="Florian Marie Logo"
+                width={416}
+                height={416}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
           </div>
 
         </div>
       </div>
 
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/5 w-32 h-32 lg:w-48 lg:h-48 rounded-full blur-3xl animate-pulse" style={{ backgroundColor: 'rgba(21, 32, 28, 0.04)', animationDuration: '8s' }}></div>
-        <div className="absolute bottom-1/3 right-1/5 w-24 h-24 lg:w-40 lg:h-40 rounded-full blur-2xl animate-pulse delay-1000" style={{ backgroundColor: 'rgba(21, 32, 28, 0.03)', animationDuration: '10s' }}></div>
-      </div>
-
       <style jsx>{`
-        @keyframes gentle-pulse {
-          0%, 100% { 
-            opacity: 0.4;
-            transform: scale(1);
-          }
-          50% { 
-            opacity: 0.7;
-            transform: scale(1.03);
-          }
+        @keyframes gradient-x {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient-x { 
+          animation: gradient-x 3s ease infinite; 
+        }
+        .bg-300% { 
+          background-size: 300% 300%; 
         }
       `}</style>
     </section>

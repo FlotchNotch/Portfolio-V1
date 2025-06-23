@@ -1,3 +1,5 @@
+import { Briefcase, ArrowRight } from 'lucide-react';
+
 export default function Skills() {
   const skillCategories = [
     {

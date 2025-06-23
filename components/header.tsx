@@ -73,22 +73,87 @@ export default function Header() {
       <header className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out hidden md:block
         ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
-        ${isScrolled ? 'py-3' : 'py-4'}
       `}>
-        <div className="container">
-          <div className="flex justify-center">
+        <div className="container py-6">
+          <div className="flex items-center justify-center">
+            
+            {/* Navigation centrale */}
             <nav className={`
               transition-all duration-500 ease-out
               ${isVisible ? 'scale-100' : 'scale-95'}
             `}>
               <div className={`
-                transition-all duration-300 rounded-full px-3 py-2
+                flex items-center gap-2 p-2 rounded-2xl transition-all duration-300
                 ${isScrolled
-                  ? 'bg-black/40 backdrop-blur-xl border border-white/20 shadow-2xl shadow-black/10'
-                  : 'bg-black/20 backdrop-blur-md border border-white/10'
+                  ? 'bg-black/60 backdrop-blur-xl border border-white/20 shadow-2xl'
+                  : 'bg-black/30 backdrop-blur-md border border-white/10'
                 }
               `}>
-                <div className="flex items-center gap-2">
+                {navItems.map((item, index) => {
+                  const IconComponent = item.icon
+                  const isActive = activeSection === item.id
+                  
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`
+                        relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium transition-all duration-300 text-sm
+                        ${isActive
+                          ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
+                          : 'text-neutral-400 hover:text-white hover:bg-white/10'
+                        }
+                      `}
+                      style={{
+                        transitionDelay: isVisible ? `${index * 50}ms` : '0ms'
+                      }}
+                    >
+                      <IconComponent size={16} />
+                      <span className="hidden xl:inline whitespace-nowrap">
+                        {item.label}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+            </nav>
+
+            {/* Menu burger responsive pour tablette */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`
+                lg:hidden absolute right-6 p-2.5 rounded-xl transition-all duration-300
+                ${isMenuOpen
+                  ? 'bg-emerald-500/20 border border-emerald-500/30'
+                  : 'bg-black/40 border border-white/20 hover:bg-black/60'
+                }
+                backdrop-blur-xl
+              `}
+            >
+              <div className="relative w-5 h-5 flex items-center justify-center">
+                <span className={`
+                  absolute w-5 h-0.5 bg-white rounded-full transition-all duration-300
+                  ${isMenuOpen ? 'rotate-45 bg-emerald-400' : '-translate-y-1.5'}
+                `}></span>
+                <span className={`
+                  absolute w-5 h-0.5 bg-white rounded-full transition-all duration-300
+                  ${isMenuOpen ? 'opacity-0 scale-0' : 'opacity-100'}
+                `}></span>
+                <span className={`
+                  absolute w-5 h-0.5 bg-white rounded-full transition-all duration-300
+                  ${isMenuOpen ? '-rotate-45 bg-emerald-400' : 'translate-y-1.5'}
+                `}></span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Dropdown menu pour tablette */}
+        {isMenuOpen && (
+          <div className="lg:hidden">
+            <div className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/20">
+              <div className="container py-6">
+                <div className="grid grid-cols-2 gap-4">
                   {navItems.map((item, index) => {
                     const IconComponent = item.icon
                     const isActive = activeSection === item.id
@@ -98,28 +163,28 @@ export default function Header() {
                         key={item.id}
                         onClick={() => scrollToSection(item.id)}
                         className={`
-                          relative flex items-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full font-medium transition-all duration-300 text-sm sm:text-base
-                          ${isActive
-                            ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
-                            : 'text-neutral-400 hover:text-white hover:bg-white/10'
-                          }
+                          btn w-full flex items-center gap-3 text-left
+                          ${isActive ? 'btn-primary' : 'btn-secondary'}
                         `}
                         style={{
-                          transitionDelay: isVisible ? `${index * 50}ms` : '0ms'
+                          transform: isMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
+                          opacity: isMenuOpen ? 1 : 0,
+                          transitionDelay: `${index * 50}ms`
                         }}
                       >
                         <IconComponent size={18} />
-                        <span className="hidden lg:inline">
-                          {item.label}
-                        </span>
+                        <span>{item.label}</span>
+                        {isActive && (
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse ml-auto"></div>
+                        )}
                       </button>
                     )
                   })}
                 </div>
               </div>
-            </nav>
+            </div>
           </div>
-        </div>
+        )}
       </header>
 
       <div className="md:hidden">

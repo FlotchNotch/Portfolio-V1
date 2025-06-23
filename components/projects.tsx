@@ -84,20 +84,20 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-ghost group"
+                    className="btn btn-ghost group w-full sm:w-auto"
                   >
-                    <Github size={18} className="group-hover:rotate-12 transition-transform" />
-                    <span>Code</span>
+                    <Github size={16} className="group-hover:rotate-12 transition-transform" />
+                    <span>Code source</span>
                   </a>
 
                   <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-primary group"
+                    className="btn btn-primary group w-full sm:w-auto"
                   >
-                    <ExternalLink size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    <span>Demo</span>
+                    <span>Voir la démo</span>
+                    <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>
               </div>
@@ -111,8 +111,8 @@ export default function Projects() {
               rel="noopener noreferrer"
               className="btn btn-secondary group"
             >
-              <Github size={18} className="group-hover:rotate-12 transition-transform" />
-              <span>Voir tous mes projets sur GitHub</span>
+              <Github size={16} className="group-hover:rotate-12 transition-transform" />
+              <span>Tous mes projets sur GitHub</span>
               <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>

@@ -60,10 +60,13 @@ export default function About() {
                   <span className="skill-tag secondary">Veille Tech</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                );
+              }
