@@ -40,8 +40,8 @@ export default function Skills() {
       <div className="container">
         <div className="max-w-6xl">
           <div className="text-sm text-neutral-400 font-medium mb-4 tracking-wider">COMPÉTENCES</div>
-          <h2 className="text-4xl md:text-5xl font-bold text-display mb-8 leading-tight">Technologies maîtrisées</h2>
-          <p className="text-neutral-400 mb-16 max-w-2xl text-lg text-body">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-display mb-8 sm:mb-12 leading-tight">Technologies maîtrisées</h2>
+          <p className="text-neutral-400 mb-12 sm:mb-16 max-w-2xl text-base sm:text-lg text-body">
             Stack technique acquise pendant ma formation et mes projets personnels.
           </p>
 

@@ -40,14 +40,13 @@ export default function Projects() {
       <div className="container">
         <div className="max-w-5xl">
           <div className="text-sm text-neutral-400 font-medium mb-4 tracking-wider">PROJETS</div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-display mb-6 sm:mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-display mb-8 sm:mb-12 leading-tight">
             Réalisations récentes
           </h2>
           <p className="text-neutral-400 mb-12 sm:mb-16 max-w-2xl text-base sm:text-lg text-body">
             Projets développés pendant ma formation et en autonomie pour perfectionner mes compétences.
           </p>
 
-          {/* Grille responsive corrigée */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 auto-rows-fr">
             {projects.map((project, index) => (
               <div
@@ -55,13 +54,12 @@ export default function Projects() {
                 className="card group flex flex-col h-full"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Header avec titre et statut */}
                 <div className="flex items-start justify-between mb-4 sm:mb-6">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-serif transition-colors duration-300 group-hover:text-emerald-400 flex-1 pr-4">
+                  <h3 className="text-xl font-semibold text-serif transition-colors duration-300 group-hover:text-emerald-400 flex-1 pr-4">
                     {project.title}
                   </h3>
                   <span
-                    className={`text-xs font-medium tracking-wider flex-shrink-0 ${getStatusColor(
+                    className={`text-sm font-medium tracking-wider flex-shrink-0 ${getStatusColor(
                       project.status
                     )}`}
                   >
@@ -69,21 +67,18 @@ export default function Projects() {
                   </span>
                 </div>
 
-                {/* Description */}
-                <p className="text-neutral-400 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base text-body flex-1">
+                <p className="text-neutral-400 leading-relaxed mb-6 sm:mb-8 text-base text-body flex-1">
                   {project.description}
                 </p>
 
-                {/* Technologies */}
                 <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
                   {project.technologies.map((tech) => (
-                    <span key={tech} className="skill-tag text-xs px-2 py-1 sm:px-3 sm:py-1.5">
+                    <span key={tech} className="skill-tag">
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Boutons d'action - Harmonisés */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
                     href={project.github}
@@ -109,7 +104,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* CTA GitHub global */}
           <div className="text-center mt-16">
             <a
               href="https://github.com/flotchnotch"

@@ -22,25 +22,19 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       
-      // Détection du scroll
       setIsScrolled(currentScrollY > 20)
       
-      // Logique de visibilité du header
       if (currentScrollY < 50) {
-        // Toujours visible en haut de page
         setIsVisible(true)
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scroll vers le bas - cacher
         setIsVisible(false)
-        setIsMenuOpen(false) // Fermer le menu mobile si ouvert
+        setIsMenuOpen(false)
       } else if (currentScrollY < lastScrollY) {
-        // Scroll vers le haut - montrer
         setIsVisible(true)
       }
       
       setLastScrollY(currentScrollY)
 
-      // Détection de section active
       const sections = navItems.map(item => document.getElementById(item.id))
       const scrollPosition = currentScrollY + 150
 
@@ -62,9 +56,20 @@ export default function Header() {
     setIsMenuOpen(false)
   }
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
+
   return (
     <>
-      {/* Header Desktop avec animation */}
       <header className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out hidden md:block
         ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}
@@ -117,23 +122,20 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Header Mobile avec animation */}
       <div className="md:hidden">
-        {/* Bouton Menu avec animation */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className={`
-            fixed top-4 right-4 z-50 p-3 rounded-full transition-all duration-500 ease-out group
+            fixed top-4 right-4 z-[60] p-3 rounded-full transition-all duration-500 ease-out group
             ${isVisible ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-16 opacity-0 scale-90'}
             ${isScrolled || isMenuOpen
-              ? 'bg-black/40 backdrop-blur-xl border border-white/30'
+              ? 'bg-black/60 backdrop-blur-xl border border-white/30'
               : 'bg-black/20 backdrop-blur-md border border-white/15'
             }
-            ${isMenuOpen ? 'scale-110' : 'hover:scale-105'}
+            ${isMenuOpen ? 'scale-110 bg-emerald-500/20 border-emerald-500/30' : 'hover:scale-105'}
           `}
         >
           <div className="relative w-5 h-5 flex flex-col justify-center">
-            {/* Barre 1 */}
             <span className={`
               block w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center
               ${isMenuOpen 
@@ -142,7 +144,6 @@ export default function Header() {
               }
             `}></span>
             
-            {/* Barre 2 */}
             <span className={`
               block w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center
               ${isMenuOpen 
@@ -151,7 +152,6 @@ export default function Header() {
               }
             `}></span>
             
-            {/* Barre 3 */}
             <span className={`
               block w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform origin-center
               ${isMenuOpen 
@@ -162,58 +162,97 @@ export default function Header() {
           </div>
         </button>
 
-        {/* Menu Déroulant avec animation améliorée */}
         <div className={`
-          fixed top-20 right-4 z-40 transition-all duration-500 ease-out
+          fixed inset-0 z-50 transition-all duration-700 ease-out
           ${isMenuOpen && isVisible
-            ? 'opacity-100 translate-y-0 scale-100' 
-            : 'opacity-0 -translate-y-8 scale-95 pointer-events-none'
+            ? 'opacity-100 pointer-events-auto' 
+            : 'opacity-0 pointer-events-none'
           }
         `}>
-          <div className="bg-black/40 backdrop-blur-xl border border-white/30 rounded-3xl p-3 shadow-2xl min-w-[200px] transform">
-            <nav className="space-y-2">
-              {navItems.map((item, index) => {
-                const IconComponent = item.icon
-                const isActive = activeSection === item.id
-                
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`
-                      w-full flex items-center gap-3 px-4 py-3 sm:px-6 sm:py-4 rounded-full font-medium transition-all duration-300 text-sm sm:text-base
-                      ${isActive
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                        : 'text-neutral-300 hover:text-white hover:bg-white/10'
-                      }
-                    `}
-                    style={{ 
-                      animationDelay: `${index * 80}ms`,
-                      transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(-10px) scale(0.95)',
-                      transition: `all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 80}ms`
-                    }}
-                  >
-                    <IconComponent size={18} className="flex-shrink-0" />
-                    <span>{item.label}</span>
-                    
-                    {/* Point actif avec animation */}
-                    {isActive && (
-                      <div className="ml-auto w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    )}
-                  </button>
-                )
-              })}
-            </nav>
-          </div>
-        </div>
-
-        {/* Overlay avec animation */}
-        {isMenuOpen && (
           <div 
-            className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm transition-all duration-300 opacity-100"
+            className={`
+              absolute inset-0 bg-black/60 transition-all duration-500
+              ${isMenuOpen ? 'opacity-100' : 'opacity-0'}
+            `}
             onClick={() => setIsMenuOpen(false)}
           />
-        )}
+          
+          <div className={`
+            absolute top-0 left-0 right-0 h-[300px] sm:h-[350px]
+            bg-gradient-to-b from-black/95 via-black/90 to-black/70 
+            border-b border-white/20
+            transition-all duration-700 ease-out overflow-hidden
+            ${isMenuOpen 
+              ? 'translate-y-0' 
+              : '-translate-y-full'
+            }
+          `}>
+            
+            <div className="h-full flex flex-col px-4 py-6">
+              
+              <div className="h-12"></div>
+              
+              <nav className="flex-1 flex flex-col justify-center space-y-2">
+                {navItems.map((item, index) => {
+                  const IconComponent = item.icon
+                  const isActive = activeSection === item.id
+                  
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`
+                        group flex items-center gap-3 px-4 py-3 rounded-xl font-medium 
+                        transition-all duration-500 text-base relative overflow-hidden
+                        ${isActive
+                          ? 'btn btn-primary'
+                          : 'btn btn-secondary'
+                        }
+                      `}
+                      style={{ 
+                        transform: isMenuOpen ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
+                        opacity: isMenuOpen ? 1 : 0,
+                        transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 80 + 200}ms`
+                      }}
+                    >
+                      <IconComponent 
+                        size={18} 
+                        className="group-hover:scale-110 transition-transform duration-300" 
+                      />
+                      
+                      <span className="flex-1 text-left">
+                        {item.label}
+                      </span>
+                      
+                      {isActive && (
+                        <div className="relative">
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                          <div className="absolute inset-0 w-2 h-2 bg-white rounded-full animate-ping opacity-75"></div>
+                        </div>
+                      )}
+                      
+                      {!isActive && (
+                        <div className="opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                          →
+                        </div>
+                      )}
+                    </button>
+                  )
+                })}
+              </nav>
+              
+              <div className={`
+                pt-4 border-t border-white/10 text-center
+                transition-all duration-500 delay-600
+                ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+              `}>
+                <p className="text-xs text-neutral-400">
+                  <span className="text-emerald-400">Florian Marie</span> • Développeur Full Stack
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )

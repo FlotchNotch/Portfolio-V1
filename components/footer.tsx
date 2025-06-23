@@ -1,71 +1,76 @@
 "use client"
 
-import { Github, Linkedin, Mail, Heart } from "lucide-react"
+import { Heart, Code2, Sparkles } from "lucide-react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="border-t border-white/10 bg-black/20 backdrop-blur-sm">
-      <div className="container py-12">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
-          {/* Logo & Description */}
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold text-white mb-2">Florian Marie</h3>
-            <p className="text-neutral-400 text-sm">
-              Développeur Full Stack passionné par l'innovation
+      <div className="container py-16">
+        <div className="max-w-4xl mx-auto">
+          
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-300 text-sm font-medium backdrop-blur-sm mb-6">
+              <Sparkles size={16} className="animate-pulse" />
+              Merci de votre visite
+            </div>
+            
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-display">
+              Florian Marie
+            </h3>
+            
+            <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Développeur Full Stack passionné par la création d'applications web modernes et performantes.
             </p>
           </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-6">
-            <a 
-              href="https://github.com/FlotchNotch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link group"
-              aria-label="GitHub"
-            >
-              <Github size={18} className="group-hover:scale-110 transition-transform" />
-            </a>
-            
-            <a 
-              href="https://www.linkedin.com/in/florian-marie-0602a76a/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link group"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
-            </a>
-            
-            <a 
-              href="mailto:florian.marie92@gmail.com"
-              className="social-link group"
-              aria-label="Email"
-            >
-              <Mail size={18} className="group-hover:scale-110 transition-transform" />
-            </a>
+          <div className="relative mb-12">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-white/10"></div>
+            </div>
+            <div className="relative flex justify-center">
+              <div className="bg-neutral-900 px-6">
+                <Code2 size={20} className="text-emerald-400" />
+              </div>
+            </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-center md:text-right">
-            <p className="text-neutral-500 text-sm flex items-center justify-center md:justify-end gap-1">
-              © {currentYear} Développé avec 
-              <Heart size={14} className="text-emerald-400 fill-current" /> 
-              par Florian Marie
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="text-sm text-neutral-500 mb-1 font-medium tracking-wider">STACK</div>
+              <p className="text-neutral-300 font-medium">Next.js • React • TypeScript</p>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-sm text-neutral-500 mb-1 font-medium tracking-wider">DESIGN</div>
+              <p className="text-neutral-300 font-medium">Tailwind CSS • Responsive</p>
+            </div>
+            
+            <div className="text-center sm:col-span-2 lg:col-span-1">
+              <div className="text-sm text-neutral-500 mb-1 font-medium tracking-wider">LOCALISATION</div>
+              <p className="text-neutral-300 font-medium">Rennes, France</p>
+            </div>
+          </div>
+
+          <div className="text-center space-y-4">
+            <p className="text-neutral-400 text-sm flex items-center justify-center gap-2">
+              © {currentYear} • Développé avec 
+              <Heart size={14} className="text-emerald-400 fill-current animate-pulse" /> 
+              et beaucoup de ☕
             </p>
+            
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-1 sm:gap-2 text-xs text-neutral-500">
+              <span>Conçu et développé par Florian Marie</span>
+              <span className="hidden sm:inline">•</span>
+              <span>Tous droits réservés</span>
+            </div>
           </div>
-        </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 mt-8 pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
-            <p>Tous droits réservés</p>
-            <p>Conçu avec Next.js & Tailwind CSS</p>
-          </div>
         </div>
       </div>
+      
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent"></div>
     </footer>
   )
 }
