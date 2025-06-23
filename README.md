@@ -1,28 +1,20 @@
 # Portfolio Florian Marie
 
-Portfolio personnel développé avec Next.js, TypeScript et Tailwind CSS.
+Portfolio personnel développé avec Next.js et TypeScript.
 
-## 🚀 Aperçu
+## 🚀 Technologies
 
-Portfolio moderne et responsive présentant mes compétences et projets en développement web.
-
-## 🛠️ Technologies
-
-- **Next.js 15** - Framework React
-- **TypeScript** - Typage statique
-- **Tailwind CSS** - Framework CSS
-- **Lucide React** - Icônes
+- Next.js 15
+- TypeScript  
+- Tailwind CSS
+- Lucide React
 
 ## 📦 Installation
 
 ```bash
-# Cloner le projet
-git clone https://github.com/FlotchNotch/portfolio-v1.git
-
-# Installer les dépendances
+git clone https://github.com/FlotchNotch/portfolio.git
+cd portfolio
 npm install
-
-# Lancer en développement
 npm run dev
 ```
 
@@ -42,8 +34,8 @@ Déployé automatiquement sur Vercel : [portfolio-v1.vercel.app](https://portfol
 
 ## 📧 Contact
 
-- **Email** : florian.marie92@gmail.com
-- **LinkedIn** : [Florian Marie](https://www.linkedin.com/in/florian-marie-0602a76a/)
+- **Email** : florianmarie.webdev@gmail.com
+- **LinkedIn** : [Florian Marie](https://www.linkedin.com/in/florian-marie-bzh/)
 - **GitHub** : [FlotchNotch](https://github.com/FlotchNotch)
 
 ---
