@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function Hero() {
   return (
-    <section id="hero" className="section min-h-screen flex items-center justify-center relative overflow-hidden pt-32">
+    <section id="hero" className="section min-h-screen flex items-center justify-center relative overflow-hidden pt-32 lg:pt-40">
       <div className="container relative z-10">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-7xl mx-auto">
           
