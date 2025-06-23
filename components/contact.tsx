@@ -123,7 +123,7 @@ export default function Contact() {
                 
                 <div className="space-y-3">
                   <a 
-                    href="https://www.linkedin.com/in/florian-marie-0602a76a/" 
+                    href="https://www.linkedin.com/in/florian-marie-bzh" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-neutral-400 hover:text-emerald-400 transition-colors group"
