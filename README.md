@@ -2,21 +2,14 @@
 
 Portfolio personnel développé avec Next.js et TypeScript.
 
-## 🚀 Technologies
+**🚀 [Voir le portfolio](https://portfolio-v2-rosy-rho.vercel.app)**
+
+## 🛠️ Technologies
 
 - Next.js 15
 - TypeScript  
 - Tailwind CSS
 - Lucide React
-
-## 📦 Installation
-
-```bash
-git clone https://github.com/FlotchNotch/portfolio.git
-cd portfolio
-npm install
-npm run dev
-```
 
 ## 📁 Structure
 
@@ -30,7 +23,7 @@ portfolio/
 
 ## 🌐 Déploiement
 
-Déployé automatiquement sur Vercel : [portfolio-v1.vercel.app](https://portfolio-v1.vercel.app)
+Déployé automatiquement sur Vercel : [portfolio-v2-rosy-rho.vercel.app](https://portfolio-v2-rosy-rho.vercel.app)
 
 ## 📧 Contact
 
