@@ -38,8 +38,8 @@ export default function Contact() {
             Une opportunité dans votre équipe ? Discutons-en !
           </p>
 
-          {/* Cards de contact */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          {/* Grid uniforme avec espacement cohérent */}
+          <div className="grid gap-6 md:grid-cols-2">
             {/* Card informations */}
             <article className="card p-8 lg:p-10" itemScope itemType="https://schema.org/ContactPoint">
               <h3 className="text-lg sm:text-xl font-semibold mb-6 text-serif tracking-wide">
@@ -91,45 +91,44 @@ export default function Contact() {
                 </button>
               </div>
             </article>
-          </div>
 
-          {/* Card réseaux sociaux */}
-          <article className="card p-8 lg:p-10" itemScope itemType="https://schema.org/Person">
-            <h3 className="text-lg sm:text-xl font-semibold mb-6 text-serif tracking-wide">
-              Réseaux professionnels
-            </h3>
-            
-            <p className="text-neutral-400 text-sm mb-6">
-              Suivez mon parcours et mes projets de développement sur mes réseaux professionnels
-            </p>
-            
-            <div className="grid sm:grid-cols-2 gap-4">
-              <a 
-                href="https://www.linkedin.com/in/florian-marie-bzh" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-secondary group"
-                aria-label="Profil LinkedIn de Florian Marie développeur full stack"
-                itemProp="sameAs"
-              >
-                <Linkedin size={16} className="group-hover:scale-110 transition-transform" aria-hidden="true" />
-                <span className="text-sm">LinkedIn</span>
-              </a>
+            {/* Card réseaux sociaux - span sur 2 colonnes */}
+            <article className="card p-8 lg:p-10 md:col-span-2" itemScope itemType="https://schema.org/Person">
+              <h3 className="text-lg sm:text-xl font-semibold mb-6 text-serif tracking-wide">
+                Réseaux professionnels
+              </h3>
               
-
-              <a 
-                href="https://github.com/FlotchNotch" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-secondary group"
-                aria-label="Profil GitHub de Florian Marie avec projets de développement"
-                itemProp="sameAs"
-              >
-                <Github size={16} className="group-hover:scale-110 transition-transform" aria-hidden="true" />
-                <span className="text-sm">GitHub</span>
-              </a>
-            </div>
-          </article>
+              <p className="text-neutral-400 text-sm mb-6">
+                Suivez mon parcours et mes projets de développement sur mes réseaux professionnels
+              </p>
+              
+              <div className="grid sm:grid-cols-2 gap-4 max-w-md">
+                <a 
+                  href="https://www.linkedin.com/in/florian-marie-bzh" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary group"
+                  aria-label="Profil LinkedIn de Florian Marie développeur full stack"
+                  itemProp="sameAs"
+                >
+                  <Linkedin size={16} className="group-hover:scale-110 transition-transform" aria-hidden="true" />
+                  <span className="text-sm">LinkedIn</span>
+                </a>
+                
+                <a 
+                  href="https://github.com/FlotchNotch" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary group"
+                  aria-label="Profil GitHub de Florian Marie avec projets de développement"
+                  itemProp="sameAs"
+                >
+                  <Github size={16} className="group-hover:scale-110 transition-transform" aria-hidden="true" />
+                  <span className="text-sm">GitHub</span>
+                </a>
+              </div>
+            </article>
+          </div>
 
         </div>
       </div>
