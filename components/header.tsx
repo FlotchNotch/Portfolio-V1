@@ -83,7 +83,7 @@ export default function Header() {
               ${isVisible ? 'scale-100' : 'scale-95'}
             `}>
               <div className={`
-                flex items-center gap-2 p-2 rounded-2xl transition-all duration-300
+                flex items-center gap-2 p-3 rounded-full transition-all duration-300
                 ${isScrolled
                   ? 'bg-black/60 backdrop-blur-xl border border-white/20 shadow-2xl'
                   : 'bg-black/30 backdrop-blur-md border border-white/10'
@@ -98,7 +98,7 @@ export default function Header() {
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
                       className={`
-                        relative flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium transition-all duration-300 text-sm
+                        relative flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 text-sm
                         ${isActive
                           ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
                           : 'text-neutral-400 hover:text-white hover:bg-white/10'
@@ -122,7 +122,7 @@ export default function Header() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`
-                lg:hidden absolute right-6 p-2.5 rounded-xl transition-all duration-300
+                lg:hidden absolute right-6 p-3 rounded-full transition-all duration-300
                 ${isMenuOpen
                   ? 'bg-emerald-500/20 border border-emerald-500/30'
                   : 'bg-black/40 border border-white/20 hover:bg-black/60'
@@ -191,7 +191,7 @@ export default function Header() {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className={`
-            fixed top-4 right-4 z-[60] p-3 rounded-full transition-all duration-300 ease-out
+            fixed top-4 right-4 z-[60] p-3.5 rounded-full transition-all duration-300 ease-out
             ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-16 opacity-0'}
             ${isMenuOpen
               ? 'bg-emerald-500/20 border-emerald-500/30'
