@@ -17,17 +17,17 @@ export default function About() {
               <div className="space-y-6 text-body">
                 <p className="text-neutral-400 leading-relaxed text-sm sm:text-base">
                   Après 13 ans en tant que préparateur en pharmacie, j'ai décidé de me reconvertir dans le développement web.
-                  Cette transition m'a permis de découvrir ma passion pour la création d'applications web.
+                  Cette transition m'a révélé ma passion pour la création d'interfaces et d'expériences utilisateur.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed text-sm sm:text-base">
                   Diplômé de <span className="text-emerald-400 font-medium">La Capsule</span> en juin 2025, je me spécialise dans l'écosystème React/Next.js.
-                  J'apprécie particulièrement l'aspect problem-solving du développement full stack et la satisfaction de voir ses idées prendre vie.
+                  J'adore l'aspect visuel du développement front-end : créer des animations fluides, jouer avec les interfaces et voir mes idées prendre vie à l'écran.
                 </p>
 
                 <p className="text-neutral-400 leading-relaxed text-sm sm:text-base">
-                  Mon expérience en pharmacie m'a appris la rigueur, l'attention aux détails et le travail en équipe -
-                  des qualités que j'applique maintenant dans mes projets de développement.
+                  Curieux de nature, je passe beaucoup de temps à explorer les nouveautés technologiques, bidouiller du code et m'inspirer des dernières tendances design.
+                  Mon expérience en pharmacie m'a appris la rigueur et l'attention aux détails que j'applique désormais dans mes projets web.
                 </p>
               </div>
             </div>
@@ -67,10 +67,10 @@ export default function About() {
                 <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-serif tracking-wide">Centres d'intérêt</h3>
 
                 <div className="flex flex-wrap gap-3" role="list">
-                  <span className="skill-tag secondary" role="listitem">Technologie</span>
+                  <span className="skill-tag secondary" role="listitem">Design UI/UX</span>
+                  <span className="skill-tag secondary" role="listitem">Animations CSS</span>
+                  <span className="skill-tag secondary" role="listitem">Veille Techno</span>
                   <span className="skill-tag secondary" role="listitem">Gaming</span>
-                  <span className="skill-tag secondary" role="listitem">Open Source</span>
-                  <span className="skill-tag secondary" role="listitem">Veille Technologique</span>
                 </div>
               </article>
             </div>
