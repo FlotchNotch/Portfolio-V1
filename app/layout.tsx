@@ -48,12 +48,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Florian Marie | Développeur Full Stack Junior",
-    description: "Développeur Full Stack Junior React Next.js à Rennes. Portfolio de projets web modernes.",
-    images: ["/og-image.jpg"],
-  },
   robots: {
     index: true,
     follow: true,
