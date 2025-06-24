@@ -7,17 +7,17 @@ export default function Projects() {
       description: "Site portfolio moderne développé avec Next.js 15 et TypeScript. Design responsive avec animations fluides et interface utilisateur soignée. Optimisé SEO et performances.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
       github: "https://github.com/FlotchNotch/portfolio",
-      demo: "https://florian-marie.dev",
-      status: "En cours",
+      demo: "https://florianmariewebdev.fr",
+      status: "Terminé",
       type: "Développement web"
     },
     {
       title: "Troc'Food - Application Mobile",
-      description: "Application mobile React Native pour réduire le gaspillage alimentaire en permettant aux utilisateurs de partager leurs surplus. Projet full stack avec backend Node.js.",
+      description: "Application mobile React Native développée pour l'examen final de La Capsule. Projet éducatif pour réduire le gaspillage alimentaire en permettant aux utilisateurs de partager leurs surplus. Full stack avec backend Node.js.",
       technologies: ["React Native", "Node.js", "MongoDB", "Socket.io"],
       github: "#",
       demo: "#", 
-      status: "Terminé",
+      status: "Projet d'examen",
       type: "Application mobile"
     },
   ]
@@ -28,6 +28,8 @@ export default function Projects() {
         return "text-green-400"
       case "En cours":
         return "text-emerald-400"
+      case "Projet d'examen":
+        return "text-blue-400"
       case "Planifié":
         return "text-neutral-400"
       default:
