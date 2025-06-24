@@ -1,0 +1,28 @@
+{
+  "name": "Florian Marie - Portfolio Développeur Full Stack",
+  "short_name": "Florian Marie",
+  "description": "Portfolio de Florian Marie, développeur Full Stack Junior spécialisé React, Next.js et React Native à Rennes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/flotchlogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/flotchlogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "business"],
+  "lang": "fr-FR",
+  "scope": "/",
+  "id": "florianmarie-portfolio"
+}

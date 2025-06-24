@@ -73,10 +73,10 @@ export default function RootLayout({
     <html lang="fr" className={`${inter.variable} ${playfairDisplay.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/flotchlogo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/flotchlogo.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#10b981" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="font-sans" suppressHydrationWarning={true}>
