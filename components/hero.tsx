@@ -36,8 +36,8 @@ export default function Hero() {
 
             {/* Description avec mots-clés SEO */}
             <p className="text-sm sm:text-base text-neutral-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Je crée des applications web modernes avec <span className="text-emerald-400 font-medium">React</span> et <span className="text-emerald-400 font-medium">Next.js</span>. 
-              Développeur junior passionné, je développe mes compétences à travers chaque projet de développement web.
+              Je crée des applications web et mobile avec <span className="text-emerald-400 font-medium">React</span>, <span className="text-emerald-400 font-medium">Next.js</span> et <span className="text-emerald-400 font-medium">React Native</span>. 
+              Développeur junior passionné en <span className="text-emerald-400 font-medium">apprentissage constant</span>, je développe mes compétences à travers chaque projet de développement.
             </p>
 
             {/* CTA avec radius harmonisés */}
