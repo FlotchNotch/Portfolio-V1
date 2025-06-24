@@ -12,7 +12,7 @@ export default function Projects() {
       type: "Développement web"
     },
     {
-      title: "Troc'Food - Application Mobile",
+      title: "Miam'Share - Application Mobile",
       description: "Application mobile React Native développée pour l'examen final de La Capsule. Projet éducatif pour réduire le gaspillage alimentaire en permettant aux utilisateurs de partager leurs surplus. Full stack avec backend Node.js.",
       technologies: ["React Native", "Node.js", "MongoDB", "Socket.io"],
       github: "#",
@@ -96,29 +96,51 @@ export default function Projects() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary group w-full sm:w-auto"
-                    aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
-                    itemProp="codeRepository"
-                  >
-                    <Github size={16} className="group-hover:rotate-12 transition-transform" aria-hidden="true" />
-                    <span>Code source</span>
-                  </a>
+                  {project.github !== "#" ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary group w-full sm:w-auto"
+                      aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
+                      itemProp="codeRepository"
+                    >
+                      <Github size={16} className="group-hover:rotate-12 transition-transform" aria-hidden="true" />
+                      <span>Code source</span>
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="btn btn-secondary opacity-50 cursor-not-allowed w-full sm:w-auto"
+                      aria-label="Code source non disponible pour ce projet d'examen"
+                    >
+                      <Github size={16} aria-hidden="true" />
+                      <span>Code privé</span>
+                    </button>
+                  )}
 
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary group w-full sm:w-auto"
-                    aria-label={`Voir la démonstration en ligne du projet ${project.title}`}
-                    itemProp="url"
-                  >
-                    <span>Voir la démo</span>
-                    <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
-                  </a>
+                  {project.demo !== "#" ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary group w-full sm:w-auto"
+                      aria-label={`Voir la démonstration en ligne du projet ${project.title}`}
+                      itemProp="url"
+                    >
+                      <span>Voir la démo</span>
+                      <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="btn btn-primary opacity-50 cursor-not-allowed w-full sm:w-auto"
+                      aria-label="Démonstration non disponible pour ce projet d'examen"
+                    >
+                      <span>Démo indisponible</span>
+                      <ExternalLink size={16} aria-hidden="true" />
+                    </button>
+                  )}
                 </div>
               </article>
             ))}
