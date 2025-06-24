@@ -25,17 +25,17 @@ export const metadata: Metadata = {
     "La Capsule", "formation développeur", "projets React", "applications web", "TypeScript",
     "développeur freelance", "emploi développeur Rennes", "développeur web junior"
   ],
-  authors: [{ name: "Florian Marie", url: "https://florianmarie.dev" }],
+  authors: [{ name: "Florian Marie", url: "https://florianmariewebdev.fr" }],
   creator: "Florian Marie",
   publisher: "Florian Marie",
-  metadataBase: new URL("https://florianmarie.dev"),
+  metadataBase: new URL("https://florianmariewebdev.fr"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://florianmarie.dev",
+    url: "https://florianmariewebdev.fr",
     title: "Florian Marie | Développeur Full Stack Junior React Next.js",
     description: "Portfolio de Florian Marie, développeur Full Stack Junior spécialisé React et Next.js à Rennes. Projets web modernes et code de qualité.",
     siteName: "Florian Marie - Développeur Web",
@@ -91,8 +91,8 @@ export default function RootLayout({
               "name": "Florian Marie",
               "jobTitle": "Développeur Full Stack Junior",
               "description": "Développeur Full Stack Junior spécialisé en React, Next.js et Node.js",
-              "url": "https://florianmarie.dev",
-              "image": "https://florianmarie.dev/flotchlogo.png",
+              "url": "https://florianmariewebdev.fr",
+              "image": "https://florianmariewebdev.fr/flotchlogo.png",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Rennes",
