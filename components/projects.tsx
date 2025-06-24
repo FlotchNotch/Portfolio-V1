@@ -6,7 +6,7 @@ export default function Projects() {
       title: "Portfolio Personnel Next.js",
       description: "Site portfolio moderne développé avec Next.js 15 et TypeScript. Design responsive avec animations fluides et interface utilisateur soignée. Optimisé SEO et performances.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
-      github: "https://github.com/FlotchNotch/portfolio",
+      github: "https://github.com/FlotchNotch/portfolio-V2.git",
       demo: "https://florianmariewebdev.fr",
       status: "Terminé",
       type: "Développement web"
